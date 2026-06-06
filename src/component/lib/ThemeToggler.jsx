@@ -4,18 +4,24 @@ import Moon from "@/assets/moon.png"
 import Sun from "@/assets/sun.png";
 import { useState } from 'react';
 import ClickButton from './ClickButton';
+import { useTheme } from '@heroui/react';
 
 const ThemeToggler = () => {
     const [visible, setVisible] = useState(true);
-    const hider = ()=> setVisible(!visible)
+    const { resolvedTheme, theme, setTheme } = useTheme()
+
+    const hider = () => setVisible(!visible)
+
     return (
         <div className='flex items-center'>
-            <ClickButton hidden={visible ? true : false} variation="outline" handler={hider} className={`hover:bg-[#142338]`} isIconOnly>
-                <Image src={Moon} alt="moon" height={"20"} />
-            </ClickButton>
+          
 
-            <ClickButton hidden={visible ? false : true} handler={hider} variation="outline" className={`hover:bg-[#142338]`} isIconOnly>
-                <Image src={Sun} alt="Sun" height={"20"} />
+            <ClickButton isIconOnly 
+            variation="outline" 
+            onClick={() => 
+            setTheme(resolvedTheme === "light" ? "dark" : "light")} 
+            className={`dark:text-black dark:hover:text-white `}>
+                <Image width={"20"} alt="Theme toggler" src={resolvedTheme === "dark" ? Moon : Sun} />
             </ClickButton>
         </div>
     );

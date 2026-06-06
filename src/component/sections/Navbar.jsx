@@ -10,7 +10,7 @@ const Navbar = () => {
     return (
         <>
             <div className='container p-5 md:hidden hidden sm:hidden lg:block '>
-                <nav className="sticky  rounded-2xl top-0 z-40 w-full border-b border-separator bg-background/75 backdrop-blur-lg">
+                <nav className="sticky dark:bg-blue-400/30 rounded-2xl top-0 z-40 w-full border-b border-separator bg-background/75 backdrop-blur-lg">
                     <header className="flex h-16 items-center justify-between px-6">
                         <div className="flex items-center gap-3">
                             {/* <Logo /> */}
