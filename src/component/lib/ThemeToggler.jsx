@@ -21,7 +21,7 @@ const ThemeToggler = () => {
             onClick={() => 
             setTheme(resolvedTheme === "light" ? "dark" : "light")} 
             className={`dark:text-black dark:hover:text-white `}>
-                <Image width={"20"} alt="Theme toggler" src={resolvedTheme === "dark" ? Moon : Sun} />
+                <Image width={"20"} alt="Theme toggler" src={resolvedTheme === "light" ? Sun : Moon} />
             </ClickButton>
         </div>
     );
