@@ -55,7 +55,7 @@ export default function Footer() {
 
       {/* Bottom Bar */}
       <div className="max-w-7xl mx-auto mt-20 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
-        <p className="transition-smooth hover:text-gray-400">Copyright 2024 — Programming Hero</p>
+        <p className="transition-smooth hover:text-gray-400">Copyright 2024 — Hireloop</p>
         <div className="flex gap-6">
           <Link href="/" className="hover:text-white transition-smooth hover-lift">Terms & Policy</Link>
           <Link href="/" className="hover:text-white transition-smooth hover-lift">Privacy Guideline</Link>
