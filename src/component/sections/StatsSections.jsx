@@ -4,10 +4,10 @@ import { manrope } from "@/app/layout";
 
 export default function StatsSection() {
   return (
-    <section className="relative flex flex-col items-center justify-center w-full px-6 py-24 min-h-[700px] overflow-hidden">
-      
+    <section className="relative flex flex-col items-center justify-center w-full px-6 py-24 min-h-[700px] overflow-hidden bg-[#050505]">
+
       {/* Starry background pattern injected via inline styles for simplicity */}
-      <div 
+      <div
         className="absolute inset-0 pointer-events-none opacity-30"
         style={{
           backgroundImage: `
@@ -22,6 +22,12 @@ export default function StatsSection() {
         }}
       />
 
+      {/* Animated glowing orbs */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/3 left-1/4 w-96 h-96 bg-indigo-600/10 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-1/3 right-1/4 w-96 h-96 bg-purple-600/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+      </div>
+
       {/* Glowing Earth Background Effect */}
       <div className="absolute bottom-0 flex justify-center w-full h-[600px] max-w-[1200px] -translate-x-1/2 left-1/2 pointer-events-none">
         <div className="absolute top-20 w-[150%] md:w-[120%] h-[800px] bg-[#2a3b8c] rounded-[100%] blur-[80px] opacity-40" />
@@ -30,18 +36,18 @@ export default function StatsSection() {
       </div>
 
       <div className="relative z-10 w-full max-w-5xl mx-auto mt-20">
-        
-        <h2 className={` ${manrope.className} mb-16 text-3xl font-normal tracking-tight text-center text-gray-300 md:text-4xl lg:text-5xl leading-tight`}>
-          Assisting over <span className="font-medium text-white">15,000 job seekers</span><br className="hidden md:block" />
+
+        <h2 className={`${manrope.className} mb-16 text-3xl font-normal tracking-tight text-center text-gray-300 md:text-4xl lg:text-5xl leading-tight animate-fade-in-up`}>
+          Assisting over <span className="font-medium text-white animate-glow-text">15,000 job seekers</span><br className="hidden md:block" />
           find their dream positions.
         </h2>
 
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 md:gap-6">
-          
-          <StatCard icon={<Briefcase size={20} />} value="50K" label="Active Jobs" />
-          <StatCard icon={<Building2 size={20} />} value="12K" label="Companies" />
-          <StatCard icon={<Users size={20} />} value="2M" label="Job Seekers" />
-          <StatCard icon={<Star size={20} />} value="97%" label="Satisfaction Rate" />
+
+          <StatCard icon={<Briefcase size={20} />} value="50K" label="Active Jobs" index={0} />
+          <StatCard icon={<Building2 size={20} />} value="12K" label="Companies" index={1} />
+          <StatCard icon={<Users size={20} />} value="2M" label="Job Seekers" index={2} />
+          <StatCard icon={<Star size={20} />} value="97%" label="Satisfaction Rate" index={3} />
 
         </div>
       </div>
@@ -50,14 +56,14 @@ export default function StatsSection() {
 }
 
 // Sub-component for the individual stat boxes to keep the code DRY
-function StatCard({ icon, value, label }) {
+function StatCard({ icon, value, label, index }) {
   return (
-    <div className="bg-[#111111] border border-white/5 rounded-2xl p-6 md:p-8 shadow-2xl hover:bg-[#161616] transition-colors duration-300">
-      <div className="mb-10 text-gray-400">
+    <div className={`bg-[#111111] border border-white/5 rounded-2xl p-6 md:p-8 shadow-2xl hover:bg-[#161616] hover:border-indigo-500/50 transition-smooth hover-lift hover:shadow-lg hover:shadow-indigo-500/30 animate-fade-in-up group`} style={{ animationDelay: `${index * 0.15}s` }}>
+      <div className="mb-10 text-gray-400 transition-smooth group-hover:text-indigo-400 group-hover:animate-float">
         {icon}
       </div>
-      <div className="mb-2 text-4xl font-semibold tracking-tight text-white md:text-5xl">{value}</div>
-      <div className="text-sm font-medium text-gray-400">{label}</div>
+      <div className="mb-2 text-4xl font-semibold tracking-tight text-white md:text-5xl animate-count-up" style={{ animationDelay: `${0.2 + index * 0.15}s` }}>{value}</div>
+      <div className="text-sm font-medium text-gray-400 transition-smooth group-hover:text-indigo-300">{label}</div>
     </div>
   );
 }
