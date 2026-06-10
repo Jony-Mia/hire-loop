@@ -4,7 +4,8 @@ const useValue = (defaultValue) => {
     const [value, setValue] = useState(defaultValue);
     const handler = (e)=> setValue(e.target.value);
 
-    return [setValue, handler];
+    return [value, handler];
 };
+
 
 export default useValue;

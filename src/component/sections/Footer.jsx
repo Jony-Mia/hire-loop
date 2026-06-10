@@ -15,7 +15,7 @@ export default function Footer() {
       </div>
 
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 relative z-10">
-
+      
         {/* Brand Column */}
         <div className="lg:col-span-2 animate-fade-in-up">
           <div className="flex items-center text-2xl font-bold tracking-tighter mb-6 hover-scale transition-smooth">
@@ -65,7 +65,8 @@ export default function Footer() {
   );
 }
 
-// Sub-component for lists
+
+// Sub-component for lists 
 function FooterLinkColumn({ title, links, delay = 0 }) {
   return (
     <div className="animate-fade-in-up" style={{ animationDelay: `${delay * 0.1}s` }}>

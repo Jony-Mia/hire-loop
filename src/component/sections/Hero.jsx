@@ -106,7 +106,6 @@ export default function HeroSection() {
 
           return (
             <div
-              
               key={i}
               className="absolute w-1 h-1 bg-indigo-400 rounded-full"
               style={{
