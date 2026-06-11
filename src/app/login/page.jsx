@@ -35,14 +35,14 @@ const LoginPage = () => {
             
         }
     return (
-        <div className="p-3 ">
+        <div className="p-3 bg-black ">
             <form
                 onSubmit={submit}
                 encType="multipart/form-data"
                 className="w-full sm:w-full md:w-[95%] lg:w-[30%] mx-auto p-5 border border-[#594FFC] rounded-2xl "
             >
                 <TextField isRequired>
-                    <Label>Enter your email</Label>
+                    <Label className="text-white">Enter your email</Label>
                 <InputGroup type="email" className={"w-full"} isInvalid={false} >
 
                     <InputGroup.Input isRequired name="email" type="email" placeholder="Enter your email" />
@@ -52,10 +52,8 @@ const LoginPage = () => {
                 </InputGroup>
                 </TextField>
                 <br />
-                <br />
-
                 <TextField isRequired>
-                    <Label>Enter Your password</Label>
+                    <Label className="text-white">Enter Your password</Label>
                     <InputGroup className={"w-full"} >
                         <InputGroup.Input name="password" placeholder="Enter your password" type={passType} />
                         <InputGroup.Suffix>
@@ -64,7 +62,6 @@ const LoginPage = () => {
                     </InputGroup>
 
                 </TextField>
-                <br />
                 <br />
                 <Button className={"w-full"} type="submit" >
                     Submit
@@ -76,7 +73,7 @@ const LoginPage = () => {
                     Sign in with Google
                 </ClickButton>
                 <br />
-                <span className="text-center mt-2 block">
+                <span className="text-center mt-2 block text-white">
                     Doesn't have an account? <Link className="text-blue-400" href={"/signup"}>Sign UP</Link>
                 </span>
             </form>

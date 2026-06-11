@@ -54,7 +54,7 @@ const LoginPage = () => {
         
     }
     return (
-        <div className="p-3 ">
+        <div className="p-3 bg-black dark:text-white" >
             <form
                 onSubmit={submit}
                 encType="multipart/form-data"
@@ -62,18 +62,18 @@ const LoginPage = () => {
             >
                 <div className="flex flex-wrap lg:flex-nowrap md:flex-wrap sm:flex-wrap gap-3 w-full">
                     <TextField isRequired name="firstName" className={"w-full"} type="text" >
-                        <Label>Enter your first name</Label>
+                        <Label className="text-white">Enter your first name</Label>
                         <Input placeholder="Enter your first name" />
                     </TextField>
                     <TextField name="lastName" type="text" className={"w-full"} >
-                        <Label>Enter your last name</Label>
+                        <Label className="text-white">Enter your last name</Label>
 
                         <Input placeholder="Enter your last name" />
                     </TextField>
                 </div>
                 <br />
                 <TextField isRequired name="email">
-                    <Label>Enter your email</Label>
+                    <Label className="text-white">Enter your email</Label>
                     <InputGroup type="email" className={"w-full"} >
 
                         <InputGroup.Input placeholder="Enter your email" />
@@ -85,7 +85,7 @@ const LoginPage = () => {
                 <br />
 
                 <TextField isRequired isInvalid={validPass} name="password">
-                    <Label>Create password</Label>
+                    <Label className="text-white">Create password</Label>
                     <InputGroup isRequired className={"w-full"} >
 
                         <InputGroup.Input name="password" placeholder="Enter your password" type={passType} />
@@ -96,7 +96,7 @@ const LoginPage = () => {
                 </TextField>
                 <br />
                 <TextField isRequired isInvalid={validPass}>
-                    <Label>Confirm password</Label>
+                    <Label className="text-white">Confirm password</Label>
                     <InputGroup className={"w-full"} >
 
                         <InputGroup.Input name="confirmPassword" placeholder="Confirm password" type={passType} />
