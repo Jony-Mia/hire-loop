@@ -81,9 +81,9 @@ const Navbar = () => {
                                             </Dropdown.Trigger>
                                             <Dropdown.Popover>
                                                 <Dropdown.Menu>
-                                                    <Dropdown.Item>Profile</Dropdown.Item>
+                                                    <Dropdown.Item>Dashboard</Dropdown.Item>
                                                     <Dropdown.Item>Browse</Dropdown.Item>
-                                                    <Dropdown.Item handler={logout} className='border flex justify-between  transition-all hover:border-red-400 text-red-400'>
+                                                    <Dropdown.Item onClick={logout} className='border flex justify-between  transition-all hover:border-red-400 text-red-400'>
                                                         {/* <ClickButton variation="outline" > */}
                                                         Log out <ArrowBigRightDash size={"18"} />
                                                         {/* </ClickButton> */}

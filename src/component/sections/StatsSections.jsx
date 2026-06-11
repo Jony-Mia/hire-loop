@@ -1,69 +1,110 @@
-import React from "react";
-import { Briefcase, Building2, Users, Star } from "lucide-react";
-import { manrope } from "@/app/layout";
+"use client";
+
+import {
+  BriefcaseBusiness,
+  Building2,
+  Users,
+  Star,
+} from "lucide-react";
+
+const stats = [
+  {
+    icon: BriefcaseBusiness,
+    value: "50K",
+    label: "Active Jobs",
+  },
+  {
+    icon: Building2,
+    value: "12K",
+    label: "Companies",
+  },
+  {
+    icon: Users,
+    value: "2M",
+    label: "Job Seekers",
+  },
+  {
+    icon: Star,
+    value: "97%",
+    label: "Satisfaction Rate",
+  },
+];
 
 export default function StatsSection() {
   return (
-    <section className="relative flex flex-col items-center justify-center w-full px-6 py-24 min-h-[700px] overflow-hidden bg-[#050505]">
-
-      {/* Starry background pattern injected via inline styles for simplicity */}
+    <section className="relative overflow-hidden bg-black py-28">
+      {/* Stars */}
       <div
-        className="absolute inset-0 pointer-events-none opacity-30"
-        style={{
-          backgroundImage: `
-            radial-gradient(2px 2px at 20px 30px, #ffffff, rgba(0,0,0,0)),
-            radial-gradient(2px 2px at 40px 70px, #ffffff, rgba(0,0,0,0)),
-            radial-gradient(2px 2px at 50px 160px, #ffffff, rgba(0,0,0,0)),
-            radial-gradient(2px 2px at 90px 40px, #ffffff, rgba(0,0,0,0)),
-            radial-gradient(2px 2px at 130px 80px, #ffffff, rgba(0,0,0,0)),
-            radial-gradient(2px 2px at 160px 120px, #ffffff, rgba(0,0,0,0))
-          `,
-          backgroundSize: '200px 200px',
-        }}
+        className="
+          absolute inset-0 opacity-30
+          bg-[radial-gradient(circle_at_center,white_1px,transparent_1px)]
+          bg-[length:40px_40px]
+        "
       />
 
-      {/* Animated glowing orbs */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/3 left-1/4 w-96 h-96 bg-indigo-600/10 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-1/3 right-1/4 w-96 h-96 bg-purple-600/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+      {/* Glow */}
+      <div className="absolute left-1/2 top-0 h-[500px] w-[700px] -translate-x-1/2 rounded-full bg-indigo-600/30 blur-[120px]" />
+
+      {/* Globe */}
+      <div className="absolute left-1/2 top-[-260px] h-[800px] w-[800px] -translate-x-1/2 rounded-full bg-gradient-to-b from-indigo-400/30 via-indigo-600/20 to-transparent shadow-[0_0_120px_rgba(99,102,241,0.7)]">
+        {/* Continents */}
+        <div className="absolute top-[280px] left-[140px] h-28 w-44 rounded-full bg-white/15 blur-sm" />
+        <div className="absolute top-[220px] right-[180px] h-24 w-36 rounded-full bg-white/15 blur-sm" />
+        <div className="absolute bottom-[220px] left-[220px] h-20 w-32 rounded-full bg-white/10 blur-sm" />
       </div>
 
-      {/* Glowing Earth Background Effect */}
-      <div className="absolute bottom-0 flex justify-center w-full h-[600px] max-w-[1200px] -translate-x-1/2 left-1/2 pointer-events-none">
-        <div className="absolute top-20 w-[150%] md:w-[120%] h-[800px] bg-[#2a3b8c] rounded-[100%] blur-[80px] opacity-40" />
-        <div className="absolute top-40 w-[200%] md:w-[140%] h-[1000px] bg-gradient-to-b from-[#1c2763] to-[#050505] rounded-[100%] border-t border-[#4a63e6] shadow-[0_-20px_80px_rgba(42,59,140,0.8)] opacity-90" />
-        <div className="absolute top-40 w-full h-[1000px] bg-gradient-to-b from-transparent via-[#050505] to-[#050505] opacity-80 z-0" />
-      </div>
+      <div className="relative z-10 mx-auto max-w-7xl px-6">
+        {/* Heading */}
+        <div className="mb-16 text-center">
+          <h2 className="text-3xl font-medium leading-tight text-white md:text-5xl">
+            Assisting over 15,000 job seekers
+            <br />
+            find their dream positions.
+          </h2>
+        </div>
 
-      <div className="relative z-10 w-full max-w-5xl mx-auto mt-20">
+        {/* Stats Cards */}
+        <div className="mx-auto grid max-w-6xl gap-5 md:grid-cols-2 lg:grid-cols-4">
+          {stats.map((item, index) => {
+            const Icon = item.icon;
 
-        <h2 className={`${manrope.className} mb-16 text-3xl font-normal tracking-tight text-center text-gray-300 md:text-4xl lg:text-5xl leading-tight animate-fade-in-up`}>
-          Assisting over <span className="font-medium text-white animate-glow-text">15,000 job seekers</span><br className="hidden md:block" />
-          find their dream positions.
-        </h2>
+            return (
+              <div
+                key={index}
+                className="
+                  min-h-[180px]
+                  rounded-3xl
+                  border border-white/10
+                  bg-gradient-to-br
+                  from-zinc-950
+                  via-zinc-950
+                  to-zinc-900
+                  p-6
+                  backdrop-blur-xl
+                  transition-all
+                  duration-300
+                  hover:-translate-y-1
+                  hover:border-indigo-500/40
+                  hover:shadow-[0_0_30px_rgba(99,102,241,0.25)]
+                "
+              >
+                <Icon
+                  size={18}
+                  className="mb-10 text-white/80"
+                />
 
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 md:gap-6">
+                <h3 className="text-4xl font-semibold tracking-tight text-white md:text-5xl">
+                  {item.value}
+                </h3>
 
-          <StatCard icon={<Briefcase size={20} />} value="50K" label="Active Jobs" index={0} />
-          <StatCard icon={<Building2 size={20} />} value="12K" label="Companies" index={1} />
-          <StatCard icon={<Users size={20} />} value="2M" label="Job Seekers" index={2} />
-          <StatCard icon={<Star size={20} />} value="97%" label="Satisfaction Rate" index={3} />
-
+                <p className="mt-3 text-sm text-zinc-400">
+                  {item.label}
+                </p>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>
-  );
-}
-
-// Sub-component for the individual stat boxes to keep the code DRY
-function StatCard({ icon, value, label, index }) {
-  return (
-    <div className={`bg-[#111111] border border-white/5 rounded-2xl p-6 md:p-8 shadow-2xl hover:bg-[#161616] hover:border-indigo-500/50 transition-smooth hover-lift hover:shadow-lg hover:shadow-indigo-500/30 animate-fade-in-up group`} style={{ animationDelay: `${index * 0.15}s` }}>
-      <div className="mb-10 text-gray-400 transition-smooth group-hover:text-indigo-400 group-hover:animate-float">
-        {icon}
-      </div>
-      <div className="mb-2 text-4xl font-semibold tracking-tight text-white md:text-5xl animate-count-up" style={{ animationDelay: `${0.2 + index * 0.15}s` }}>{value}</div>
-      <div className="text-sm font-medium text-gray-400 transition-smooth group-hover:text-indigo-300">{label}</div>
-    </div>
   );
 }

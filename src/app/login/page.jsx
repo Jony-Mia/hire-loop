@@ -1,4 +1,5 @@
 "use client";
+import ClickButton from "@/component/lib/ClickButton";
 import usePassword from "@/hook/usePassword";
 
 import { authClient } from "@/lib/auth-client";
@@ -23,10 +24,16 @@ const LoginPage = () => {
             password: entries.password,
             callbackURL: "/"
         })
-
-        console.log(entries);
-
     }
+
+    async function continueWithGoogle(){
+            let {data, error } = await authClient.signIn.social({
+                provider: "google",
+    
+            })
+            console.log(data, error);
+            
+        }
     return (
         <div className="p-3 ">
             <form
@@ -64,10 +71,10 @@ const LoginPage = () => {
                 </Button>
                 <br />
 
-                <Button className="w-full mt-2" variant="tertiary">
+                <ClickButton handler={continueWithGoogle} className="w-full mt-2" variation="tertiary">
                     <Icon icon="devicon:google" />
                     Sign in with Google
-                </Button>
+                </ClickButton>
                 <br />
                 <span className="text-center mt-2 block">
                     Doesn't have an account? <Link className="text-blue-400" href={"/signup"}>Sign UP</Link>
