@@ -14,11 +14,11 @@ const Navbar = () => {
     let user = data?.user;
     let logout = async () => {
         let { data, error } = await authClient.signOut();
-        console.log(data, error);
+        console.log(data);
     }
 
     return (
-        <>
+        <div data-theme="dark" className='bg-black'>
             {/* Desktop Navbar */}
             <div data-theme="dark" className='container mx-auto p-5 md:hidden hidden bg-transparent sm:hidden lg:block animate-fade-in-down'>
                 <nav className="sticky top-0 z-40 w-full">
@@ -26,7 +26,7 @@ const Navbar = () => {
                     <div className="absolute inset-0 bg-gradient-to-r from-indigo-600/5 via-transparent to-purple-600/5 rounded-2xl" />
                     <div className="absolute inset-0 backdrop-blur-xl border border-white/10 rounded-2xl" />
 
-                    <header className="relative flex h-16 items-center justify-between px-6 rounded-2xl">
+                    <header className="relative border  border-white/15 flex h-16 items-center justify-between px-6 rounded-2xl">
                         {/* Logo Section */}
                         <div className="flex items-center gap-3 hover-scale cursor-pointer transition-smooth group">
                             <Link href="/" className="relative">
@@ -72,7 +72,7 @@ const Navbar = () => {
                                 <ThemeToggler />
                                 {
                                     user ?
-                                        <Dropdown>
+                                        <Dropdown data-theme="dark">
                                             <Dropdown.Trigger>
                                                 <Avatar>
                                                     <Avatar.Fallback className={"bg-linear-0 to-[#3c83f6] from-blue-400"}>{user?.name.slice(0, 2)}</Avatar.Fallback>
@@ -120,7 +120,7 @@ const Navbar = () => {
                     {/* Hamburger Menu */}
                     <Dropdown >
                         <Dropdown.Trigger className="transition-smooth hover-lift">
-                            <Button variant='outline'>
+                            <Button variant='ghost'>
                                 <Bars size={20} />
                             </Button>
                         </Dropdown.Trigger>
@@ -181,7 +181,7 @@ const Navbar = () => {
                     }
                 </header >
             </nav >
-        </>
+        </div>
     );
 };
 

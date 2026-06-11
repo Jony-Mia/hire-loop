@@ -8,7 +8,7 @@ export default function HeroSection() {
 
   return (
     <section className="relative flex flex-col items-center justify-center min-h-screen bg-[#0a0a0a] text-white px-4 overflow-hidden font-sans">
-
+      <br />
       {/* Background ambient glow */}
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-[500px] bg-indigo-600/20 blur-[150px] rounded-full pointer-events-none animate-pulse" />
 
@@ -28,7 +28,7 @@ export default function HeroSection() {
       </div>
 
       {/* Main Typography */}
-      <h1 className="relative z-10 max-w-3xl mb-6 text-5xl font-bold tracking-tight text-center md:text-7xl text-white/95 animate-fade-in-up delay-100">
+      <h1 className="relative z-10 max-w-3xl mb-6 text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-center md:text-7xl text-white/95 animate-fade-in-up delay-100">
         Find Your <span className="animate-glow-text">Dream Job</span> Today
       </h1>
 

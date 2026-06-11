@@ -46,7 +46,7 @@ export default function StatsSection() {
       <div className="absolute left-1/2 top-0 h-[500px] w-[700px] -translate-x-1/2 rounded-full bg-indigo-600/30 blur-[120px]" />
 
       {/* Globe */}
-      <div className="absolute left-1/2 top-[-260px] h-[800px] w-[800px] -translate-x-1/2 rounded-full bg-gradient-to-b from-indigo-400/30 via-indigo-600/20 to-transparent shadow-[0_0_120px_rgba(99,102,241,0.7)]">
+      <div className="absolute left-1/2 rotate-180 h-[800px] w-[800px] -translate-x-1/2 rounded-full bg-gradient-to-b from-indigo-400/30 via-indigo-600/20 to-transparent shadow-[0_0_120px_rgba(99,102,241,0.7)]">
         {/* Continents */}
         <div className="absolute top-[280px] left-[140px] h-28 w-44 rounded-full bg-white/15 blur-sm" />
         <div className="absolute top-[220px] right-[180px] h-24 w-36 rounded-full bg-white/15 blur-sm" />

@@ -57,7 +57,39 @@ const jobData = [
 export default function JobDiscoverySection() {
   return (
     <section className="relative flex flex-col items-center justify-center w-full px-6 py-24 bg-[#050505] overflow-hidden">
+ <div className="absolute inset-0 flex items-start justify-center overflow-hidden">
+        <div
+          className="
+            relative
+            h-[700px]
+            w-[1200px]
+            rounded-t-full
+            border border-indigo-500/20
+            opacity-70
+          "
+        >
+          {/* Horizontal Lines */}
+          {Array.from({ length: 12 }).map((_, i) => (
+            <div
+              key={`h-${i}`}
+              className="absolute left-0 right-0 border-t border-indigo-400/15"
+              style={{ top: `${i * 8}%` }}
+            />
+          ))}
 
+          {/* Vertical Curves */}
+          {Array.from({ length: 15 }).map((_, i) => (
+            <div
+              key={`v-${i}`}
+              className="absolute top-0 h-full border-l border-indigo-400/15"
+              style={{
+                left: `${i * 7}%`,
+                transform: "perspective(500px) rotateX(70deg)",
+              }}
+            />
+          ))}
+        </div>
+      </div>
       {/* Animated background orbs */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/3 left-1/3 w-96 h-96 bg-indigo-600/10 rounded-full blur-3xl animate-pulse" />
@@ -81,7 +113,7 @@ export default function JobDiscoverySection() {
         {jobData.map((job, index) => (
           <div
             key={index}
-            className="flex flex-col p-6 transition-smooth duration-300 border bg-[#111111] border-white/5 rounded-2xl hover:bg-[#161616] hover:border-indigo-500/50 hover-lift hover:shadow-lg hover:shadow-indigo-500/30 group animate-fade-in-up"
+            className="flex flex-col p-6 transition-smooth duration-300 border  border-white/15 rounded-2xl hover:bg-[#161616] hover:border-indigo-500/50 hover-lift hover:shadow-lg hover:shadow-indigo-500/30 group animate-fade-in-up"
             style={{ animationDelay: `${index * 0.1}s` }}
           >
             <h3 className="mb-3 text-xl font-medium text-white transition-smooth group-hover:text-indigo-400">{job.title}</h3>
