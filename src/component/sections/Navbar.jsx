@@ -16,12 +16,11 @@ const Navbar = () => {
         let { data, error } = await authClient.signOut();
         console.log(data, error);
     }
-    console.log(data, user);
 
     return (
         <>
             {/* Desktop Navbar */}
-            <div className='container mx-auto p-5 md:hidden hidden sm:hidden lg:block animate-fade-in-down'>
+            <div data-theme="dark" className='container mx-auto p-5 md:hidden hidden bg-transparent sm:hidden lg:block animate-fade-in-down'>
                 <nav className="sticky top-0 z-40 w-full">
                     {/* Glassmorphic background blur */}
                     <div className="absolute inset-0 bg-gradient-to-r from-indigo-600/5 via-transparent to-purple-600/5 rounded-2xl" />
@@ -114,14 +113,16 @@ const Navbar = () => {
             {/* Mobile Navbar */}
             <nav className="sticky block sm:block md:hidden lg:hidden top-0 z-40 w-full animate-fade-in-down">
                 {/* Mobile glassmorphic background */}
-                <div className="absolute inset-0 bg-gradient-to-r from-indigo-600/5 to-purple-600/5" />
-                <div className="absolute inset-0 backdrop-blur-xl border-b border-white/10" />
+                <div className="absolute inset-0 bg-linear-to-r from-indigo-600/5 to-purple-600/5" />
+                <div data-theme="dark" className="absolute inset-0  bg-black backdrop-blur-xl border-b border-white/10" />
 
                 <header className="relative flex h-16 items-center justify-between px-6">
                     {/* Hamburger Menu */}
                     <Dropdown >
-                        <Dropdown.Trigger className="transition-smooth hover-lift text-white">
-                            <Bars size={20} />
+                        <Dropdown.Trigger className="transition-smooth hover-lift">
+                            <Button variant='outline'>
+                                <Bars size={20} />
+                            </Button>
                         </Dropdown.Trigger>
                         <Dropdown.Popover>
                             <Dropdown.Menu className="bg-[#111111]/95 backdrop-blur-lg border border-white/10 rounded-xl">
@@ -145,7 +146,7 @@ const Navbar = () => {
                                     <Link href="/pricing">Pricing</Link>
                                 </Dropdown.Item>
                                 {
-                                    user ||
+                                    user &&
                                     <Dropdown.Item handler={logout} className='border border-red-400 text-red-400'>
                                         {/* <ClickButton variation="outline" > */}
                                         Log out <ArrowBigRightDash size={"18"} />
