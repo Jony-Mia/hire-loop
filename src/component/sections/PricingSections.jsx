@@ -87,7 +87,7 @@ export default function PricingSections() {
 
               {/* Popular Badge */}
               {isPopular && (
-                <div className="absolute -top-1 left-1/2 -translate-x-1/2 bg-gradient-to-r from-indigo-500 to-purple-500 text-white text-xs font-bold px-4 py-1 rounded-full flex items-center gap-1 shadow-lg shadow-indigo-500/50">
+                <div className="absolute -top-1 mt-2 left-1/2 -translate-x-1/2 bg-gradient-to-r from-indigo-500 to-purple-500 text-white text-xs font-bold px-4 py-1 rounded-full flex items-center gap-1 shadow-lg shadow-indigo-500/50">
                   <Zap size={12} /> MOST POPULAR
                 </div>
               )}

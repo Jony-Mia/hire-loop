@@ -1,6 +1,8 @@
 @import "tailwindcss";
 @import "@heroui/styles";
-
+*{
+    user-select: none;
+}
 /* ==================== GLOBAL ANIMATIONS ==================== */
 
 /* Glowing text effect */

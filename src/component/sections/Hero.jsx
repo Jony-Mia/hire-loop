@@ -1,8 +1,32 @@
+"use client";
 import { Button, Chip, Input } from "@heroui/react";
 import { Search, MapPin } from "lucide-react";
 import Briefcase from "@/assets/bag.png";
 import Image from "next/image";
 import { space_mono } from "@/app/layout";
+import * as motion from "motion/react-client"
+import { useMotionValue, useSpring, useTransform } from "motion/react";
+import Drag from "./Motion";
+
+
+const box = {
+    width: 140,
+    height: 140,
+    backgroundColor: "white",
+    borderRadius: 20,
+    padding: 20,
+}
+
+const container = {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    flex: 1,
+    width: 500,
+    height: 300,
+    maxWidth: "100%",
+    borderRadius: 20,
+}
 
 export default function HeroSection() {
 
@@ -31,7 +55,7 @@ export default function HeroSection() {
       <h1 className="relative z-10 max-w-3xl mb-6 text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-center md:text-7xl text-white/95 animate-fade-in-up delay-100">
         Find Your <span className="animate-glow-text">Dream Job</span> Today
       </h1>
-
+      {/* <Drag/> */}
       <p className="relative z-10 max-w-2xl mb-12 text-lg text-center text-gray-400 md:text-xl animate-fade-in-up delay-200">
         HireLoop connects top talent with world-class companies. Browse thousands of curated opportunities and land your next role — faster.
       </p>
@@ -48,7 +72,6 @@ export default function HeroSection() {
             placeholder="Job title, skill or company"
           />
         </div>
-
         {/* Divider */}
         <div className="hidden w-px h-8 mx-2 md:block bg-white/10" />
         <div className="block w-full h-px my-2 md:hidden bg-white/10" />
@@ -119,6 +142,6 @@ export default function HeroSection() {
         }
         )}
       </div>
-    </section>
+    </section >
   );
 }

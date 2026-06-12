@@ -9,10 +9,7 @@ export const space_mono = Space_Mono({
 export const manrope = Manrope({
   weight:["200","300","400","500","600","700","800"]
 })
-export const metadata = {
-  title: "Hireloop",
-  description: "Hunt your carrer",
-};
+
 
 export default function RootLayout({ children }) {
   return (
@@ -22,8 +19,8 @@ export default function RootLayout({ children }) {
       suppressHydrationWarning 
       suppressContentEditableWarning
     >
-      <body className="min-h-full flex flex-col" suppressHydrationWarning>
-        <Navbar/>
+      <body className="min-h-full flex flex-col relative overflow-x-hidden" suppressHydrationWarning>
+        <Navbar suppressHydrationWarning/>
         {children}
         <Footer/>
         </body>

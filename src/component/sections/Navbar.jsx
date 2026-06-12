@@ -1,13 +1,22 @@
 "use client";
-import Image from 'next/image';
-import Link from 'next/link';
+import dynamic from 'next/dynamic';
+
+// import Link from 'next/link';
 import Logo from "@/assets/logo.png";
 import { Avatar, Button, Dropdown } from '@heroui/react';
 import { Bars } from '@gravity-ui/icons';
-import ThemeToggler from '../lib/ThemeToggler';
-
+// import ThemeToggler from '../lib/ThemeToggler';
 import { ArrowBigRightDash } from 'lucide-react';
-import { authClient, useSession } from '@/lib/auth-client';
+import { authClient, useSession } from "@/lib/auth-client";
+
+const Image = dynamic(()=>import("next/image"))
+const Link = dynamic(()=>import("next/link"))
+// const Logo = dynamic(()=>import("@/assets/logo.png"));
+// const {Avatar, Button, Dropdown} = dynamic(()=>import("@heroui/react"));
+// const {Bars} = dynamic(()=>import("@gravity-ui/icons"));
+const ThemeToggler = dynamic(()=>import("../lib/ThemeToggler"));
+// const {ArrowBigRightDash} = dynamic(()=>import("lucide-react"));
+
 
 const Navbar = () => {
     let { data } = useSession();
@@ -18,7 +27,7 @@ const Navbar = () => {
     }
 
     return (
-        <div data-theme="dark" className='bg-black'>
+        <div data-theme="dark" className='bg-black' suppressHydrationWarning>
             {/* Desktop Navbar */}
             <div data-theme="dark" className='container mx-auto p-5 md:hidden hidden bg-transparent sm:hidden lg:block animate-fade-in-down'>
                 <nav className="sticky top-0 z-40 w-full">
@@ -75,7 +84,9 @@ const Navbar = () => {
                                         <Dropdown data-theme="dark">
                                             <Dropdown.Trigger>
                                                 <Avatar>
-                                                    <Avatar.Fallback className={"bg-linear-0 to-[#3c83f6] from-blue-400"}>{user?.name.slice(0, 2)}</Avatar.Fallback>
+                                                    <Avatar.Fallback className={"bg-linear-0 to-[#3c83f6] from-blue-400"}>
+                                                        {user?.name.slice(0, 2)}
+                                                    </Avatar.Fallback>
                                                 </Avatar>
                                             </Dropdown.Trigger>
                                             <Dropdown.Popover>
@@ -116,13 +127,13 @@ const Navbar = () => {
                 <div className="absolute inset-0 bg-linear-to-r from-indigo-600/5 to-purple-600/5" />
                 <div data-theme="dark" className="absolute inset-0  bg-black backdrop-blur-xl border-b border-white/10" />
 
-                <header className="relative flex h-16 items-center justify-between px-6">
+                <header className="relative flex h-16 items-center justify-between px-6" >
                     {/* Hamburger Menu */}
-                    <Dropdown >
-                        <Dropdown.Trigger className="transition-smooth hover-lift">
-                            <Button variant='ghost'>
+                    <Dropdown suppressHydrationWarning >
+                        <Dropdown.Trigger suppressHydrationWarning className="transition-smooth hover-lift">
+                            {/* <Button variant='ghost'> */}
                                 <Bars size={20} />
-                            </Button>
+                            {/* </Button> */}
                         </Dropdown.Trigger>
                         <Dropdown.Popover>
                             <Dropdown.Menu className="bg-[#111111]/95 backdrop-blur-lg border border-white/10 rounded-xl">
@@ -147,7 +158,7 @@ const Navbar = () => {
                                 </Dropdown.Item>
                                 {
                                     user &&
-                                    <Dropdown.Item handler={logout} className='border border-red-400 text-red-400'>
+                                    <Dropdown.Item onClick={logout} className='border border-red-400 text-red-400'>
                                         {/* <ClickButton variation="outline" > */}
                                         Log out <ArrowBigRightDash size={"18"} />
                                         {/* </ClickButton> */}

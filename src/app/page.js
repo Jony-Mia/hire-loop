@@ -1,14 +1,19 @@
-import Hero from "@/component/sections/Hero";
-import JobDiscoverySection from "@/component/sections/JobDiscovery";
-import StatsSection from "@/component/sections/StatsSections";
-import FeaturesSection from "@/component/sections/FeaturesSection";
-import PricingSections from "@/component/sections/PricingSections";
-import CTASection from "@/component/sections/CTASection";
+import dynamic from "next/dynamic";
+
+const Hero = dynamic(()=>import("@/component/sections/Hero"));
+const StatsSection = dynamic(()=>import("@/component/sections/StatsSections"));
+const FeaturesSection = dynamic(()=>import("@/component/sections/FeaturesSection"));
+const PricingSections = dynamic(()=>import("@/component/sections/PricingSections"));
+const JobDiscoverySection = dynamic(()=>import("@/component/sections/JobDiscovery"));
+const CTASection = dynamic(()=>import("@/component/sections/CTASection"));
+const Drag = dynamic(()=>import("@/component/sections/Motion"));
+
 
 export default function Home() {
   return(
     <>
     <Hero/>
+    <Drag/>
     <StatsSection/>
     <JobDiscoverySection/>
     <FeaturesSection/>
