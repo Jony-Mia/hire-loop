@@ -9,24 +9,6 @@ import { useMotionValue, useSpring, useTransform } from "motion/react";
 import Drag from "./Motion";
 
 
-const box = {
-    width: 140,
-    height: 140,
-    backgroundColor: "white",
-    borderRadius: 20,
-    padding: 20,
-}
-
-const container = {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    flex: 1,
-    width: 500,
-    height: 300,
-    maxWidth: "100%",
-    borderRadius: 20,
-}
 
 export default function HeroSection() {
 
@@ -125,10 +107,11 @@ export default function HeroSection() {
       {/* Floating particles */}
       <div className="absolute inset-0 pointer-events-none">
         {[...Array(80)].map((_, i) => {
-          let rand = Math.random;
+          let rand = ()=>Math.random()
 
           return (
             <div
+            suppressHydrationWarning
               key={i}
               className="absolute w-1 h-1 bg-indigo-400 rounded-full"
               style={{

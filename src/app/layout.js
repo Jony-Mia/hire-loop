@@ -2,6 +2,8 @@ import { Manrope, Space_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/component/sections/Navbar";
 import Footer from "@/component/sections/Footer";
+import dynamic from "next/dynamic";
+const Drag = dynamic(()=>import("@/component/sections/Motion"));
 
 export const space_mono = Space_Mono({
   weight:["400","700"]
@@ -21,6 +23,7 @@ export default function RootLayout({ children }) {
     >
       <body className="min-h-full flex flex-col relative overflow-x-hidden" suppressHydrationWarning>
         <Navbar suppressHydrationWarning/>
+        {/* <Drag/> */}
         {children}
         <Footer/>
         </body>

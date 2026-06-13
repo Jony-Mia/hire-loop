@@ -67,6 +67,7 @@ export default function JobDiscoverySection() {
             border border-indigo-500/20
             opacity-70
           "
+          suppressHydrationWarning
         >
           {/* Horizontal Lines */}
           {Array.from({ length: 12 }).map((_, i) => (

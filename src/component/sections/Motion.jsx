@@ -1,27 +1,24 @@
 "use client";
-import { frame, motion, useSpring } from "motion/react"
-import { useRef, useState } from "react";
+import { motion } from "motion/react";
+import { useEffect, useState } from "react";
 const Drag = () => {
-    
+
     const [x, setX] = useState(0);
     const [y, setY] = useState(0);
 
-
     const handlePointerMove = ({ pageX, pageY }) => {
-        
         setX(pageX)
         setY(pageY)
-        
     }
-
-    window.addEventListener("mousemove", handlePointerMove)
+    useEffect(()=>{
+        window.addEventListener("mousemove", handlePointerMove)
+    },[x,y])
     return (
         <motion.div
-        
             style={{ x, y }}
             animate={{
                 scale: 1.2,
-                rotate: [180, 0,  180, 0],
+                rotate: [180, 0, 180, 0],
                 transition: {
                     repeat: Infinity,
                     duration: 1,
@@ -31,6 +28,7 @@ const Drag = () => {
                 },
                 borderRadius: "50%"
             }}
+            
             className='h-10 w-10 rounded-2xl bg-transparent border-2 border-blue-500 absolute translate-x-[-50%] z-10 translate-y-[-50%] p-3 '>
 
         </motion.div>

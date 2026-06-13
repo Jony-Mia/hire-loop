@@ -38,8 +38,9 @@ export default function StatsSection() {
         className="
           absolute inset-0 opacity-30
           bg-[radial-gradient(circle_at_center,white_1px,transparent_1px)]
-          bg-[length:40px_40px]
+          bg-size-[40px_40px]
         "
+        suppressHydrationWarning
       />
 
       {/* Glow */}
@@ -71,11 +72,12 @@ export default function StatsSection() {
             return (
               <div
                 key={index}
+                suppressHydrationWarning
                 className="
-                  min-h-[180px]
+                  min-h-45
                   rounded-3xl
                   border border-white/10
-                  bg-gradient-to-br
+                  bg-linear-to-br
                   from-zinc-950
                   via-zinc-950
                   to-zinc-900
