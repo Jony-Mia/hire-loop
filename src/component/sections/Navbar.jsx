@@ -130,7 +130,7 @@ const Navbar = () => {
                 <header className="relative flex h-16 items-center justify-between px-6" >
                     {/* Hamburger Menu */}
                     <Dropdown suppressHydrationWarning >
-                        <Dropdown.Trigger suppressHydrationWarning className="transition-smooth text-white hover-lift">
+                        <Dropdown.Trigger suppressHydrationWarning className="transition-smooth p-3 rounded-2xl bg-gray-800 text-white hover-lift">
                             {/* <Button variant='ghost'> */}
                             <Bars size={20} />
                             {/* </Button> */}
