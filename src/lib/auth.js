@@ -18,7 +18,15 @@ export const auth = betterAuth({
   socialProviders:{
     google:{
       clientId: process.env.GOOGLE_AUTH_CLIENT_ID,
-      clientSecret: process.env.GOOGLE_AUTH_SECRET_KEY
+      clientSecret: process.env.GOOGLE_AUTH_SECRET_KEY,
+      
+    }
+  },
+  user:{
+    additionalFields:{
+      role:{
+        defaultValue:"seeker"
+      }
     }
   }
 });

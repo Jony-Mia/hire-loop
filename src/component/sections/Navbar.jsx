@@ -9,12 +9,12 @@ import { Bars } from '@gravity-ui/icons';
 import { ArrowBigRightDash } from 'lucide-react';
 import { authClient, useSession } from "@/lib/auth-client";
 
-const Image = dynamic(()=>import("next/image"))
-const Link = dynamic(()=>import("next/link"))
+const Image = dynamic(() => import("next/image"))
+const Link = dynamic(() => import("next/link"))
 // const Logo = dynamic(()=>import("@/assets/logo.png"));
 // const {Avatar, Button, Dropdown} = dynamic(()=>import("@heroui/react"));
 // const {Bars} = dynamic(()=>import("@gravity-ui/icons"));
-const ThemeToggler = dynamic(()=>import("../lib/ThemeToggler"));
+const ThemeToggler = dynamic(() => import("../lib/ThemeToggler"));
 // const {ArrowBigRightDash} = dynamic(()=>import("lucide-react"));
 
 
@@ -25,7 +25,7 @@ const Navbar = () => {
         let { data, error } = await authClient.signOut();
         console.log(data);
     }
-
+    
     return (
         <div data-theme="dark" className='bg-black' suppressHydrationWarning>
             {/* Desktop Navbar */}
@@ -91,12 +91,12 @@ const Navbar = () => {
                                             </Dropdown.Trigger>
                                             <Dropdown.Popover>
                                                 <Dropdown.Menu>
-                                                    <Dropdown.Item>Dashboard</Dropdown.Item>
+                                                    <Dropdown.Item>
+                                                        <Link href={"/dashboard"}>Dashboard</Link>
+                                                    </Dropdown.Item>
                                                     <Dropdown.Item>Browse</Dropdown.Item>
                                                     <Dropdown.Item onClick={logout} className='border flex justify-between  transition-all hover:border-red-400 text-red-400'>
-                                                        {/* <ClickButton variation="outline" > */}
                                                         Log out <ArrowBigRightDash size={"18"} />
-                                                        {/* </ClickButton> */}
                                                     </Dropdown.Item>
                                                 </Dropdown.Menu>
                                             </Dropdown.Popover>
@@ -130,9 +130,9 @@ const Navbar = () => {
                 <header className="relative flex h-16 items-center justify-between px-6" >
                     {/* Hamburger Menu */}
                     <Dropdown suppressHydrationWarning >
-                        <Dropdown.Trigger suppressHydrationWarning className="transition-smooth hover-lift">
+                        <Dropdown.Trigger suppressHydrationWarning className="transition-smooth text-white hover-lift">
                             {/* <Button variant='ghost'> */}
-                                <Bars size={20} />
+                            <Bars size={20} />
                             {/* </Button> */}
                         </Dropdown.Trigger>
                         <Dropdown.Popover>

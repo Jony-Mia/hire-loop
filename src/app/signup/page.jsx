@@ -16,7 +16,7 @@
 //     let [passType, setPassType] = usePassword(false)
 //     let [validPass, setValidPass] = useState(false)
 
-    
+
 //     function imageUpload(e) {
 //         let imageFile = e.target.files[0]
 //         if (!imageFile) return;
@@ -30,7 +30,7 @@
 
 //         })
 //         console.log(data, error);
-        
+
 //     }
 //     async function submit(e) {
 //         e.preventDefault();
@@ -40,7 +40,7 @@
 //         let pass = entries.password;
 //         let cpass = entries.confirmPassord;
 //         console.log(entries);
-        
+
 //         // if (pass === cpass) {
 //           let {data, error} = await authClient.signUp.email({
 //                 name: entries.firstName,
@@ -49,9 +49,9 @@
 //                 // image: entries.image,
 //                 callbackURL: "/",
 //             })
-            
+
 //         // }
-        
+
 //     }
 //     return (
 //         <div className="p-3 bg-black dark:text-white" >
@@ -159,6 +159,7 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 import { animate, inView, stagger } from "motion";
 import { Button, Input, Checkbox, Separator as Divider } from "@heroui/react";
+import { authClient } from "@/lib/auth-client";
 
 
 // ─── Particle Canvas Background ───────────────────────────────────────────────
@@ -314,6 +315,7 @@ function GlowInput({
   const wrapRef = useRef(null);
   const scanAnimRef = useRef(null);
 
+
   const handleFocus = useCallback(() => {
     if (!scanRef.current) return;
     // Fade the scan line in, then loop the sweep
@@ -362,8 +364,8 @@ function GlowInput({
 
 // ─── Main Signup Form ──────────────────────────────────────────────────────────
 export default function SignupForm() {
-//   const [form, setForm] = useState({ username: "", email: "", password: "" });
-//   const [agreed, setAgreed] = useState(false);
+  //   const [form, setForm] = useState({ username: "", email: "", password: "" });
+  //   const [agreed, setAgreed] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -503,6 +505,18 @@ export default function SignupForm() {
     setSubmitted(true);
   };
 
+  // Continue google sign in
+  async function continueWithGoogle() {
+    let { data, error } = await authClient.signIn.social({
+      provider: "google",
+      additionalData:{
+        role:"seeker"
+      }
+    })
+    console.log(data, error);
+
+  }
+
   return (
     <>
       {/* ── Deep space background ── */}
@@ -585,7 +599,7 @@ export default function SignupForm() {
                     label="Email Address"
                     placeholder="example@ex.com"
                     type="email"
-                   
+
                   />
                   <GlowInput
                     label="Password"
@@ -596,7 +610,7 @@ export default function SignupForm() {
 
                 {/* Footer: checkbox + button + OAuth */}
                 <div ref={footerRef} className="flex flex-col gap-5">
-                
+
                   <Button
                     onPress={handleSubmit}
                     isLoading={loading}
@@ -632,17 +646,18 @@ export default function SignupForm() {
                     <div className="grid grid-cols-1 gap-y-1">
                       {["GITHUB", "GOOGLE"].map((p) => (
                         <>
-                        <Button
-                          key={p}
-                          variant="bordered"
-                          size="sm"
-                          className="h-10 rounded-xl border-white/10 font-mono text-xs tracking-widest text-slate-400 hover:border-white/25 hover:text-white transition-all w-full"
-                          style={{ background: "rgba(255,255,255,0.02)" }}
+                          <Button
+                            key={p}
+                            variant="bordered"
+                            size="sm"
+                            className="h-10 rounded-xl border-white/10 font-mono text-xs tracking-widest text-slate-400 hover:border-white/25 hover:text-white transition-all w-full"
+                            style={{ background: "rgba(255,255,255,0.02)" }}
+                            onClick={p==="GOOGLE"?()=>continueWithGoogle() : ()=>{}}
                           >
-                          {p}
-                        </Button>
-                        <br />
-                            </>
+                            {p}
+                          </Button>
+                          <br />
+                        </>
                       ))}
                     </div>
                     <p className="text-center text-xs text-slate-500">
@@ -717,7 +732,7 @@ export default function SignupForm() {
                 </div>
 
                 <Button
-                
+
                   variant="bordered"
                   className="rounded-xl border-white/10 font-mono text-xs tracking-widest text-slate-400 hover:border-cyan-400/40 hover:text-cyan-400 transition-all"
                 >
